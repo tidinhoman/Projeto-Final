@@ -1,0 +1,61 @@
+[gd_scene load_steps=11 format=3 uid="uid://j8gmr1dthm8r"]
+
+[ext_resource type="PackedScene" uid="uid://jtphp3i56bxr" path="res://Cenas/player.tscn" id="1_o33cy"]
+[ext_resource type="PackedScene" uid="uid://bthi7j7ixt663" path="res://Cenas/moeda.tscn" id="2_pyaqu"]
+[ext_resource type="PackedScene" uid="uid://87rkp1xash2k" path="res://Cenas/hud.tscn" id="3_3u7sa"]
+[ext_resource type="PackedScene" uid="uid://blnb84bo0pq5s" path="res://Cenas/inimigo_simples.tscn" id="4_pv0qo"]
+
+[sub_resource type="BoxMesh" id="BoxMesh_i68q4"]
+size = Vector3(50, 1, 50)
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_i68q4"]
+size = Vector3(50, 1, 50)
+
+[sub_resource type="ProceduralSkyMaterial" id="ProceduralSkyMaterial_o33cy"]
+
+[sub_resource type="Sky" id="Sky_pyaqu"]
+sky_material = SubResource("ProceduralSkyMaterial_o33cy")
+
+[sub_resource type="Environment" id="Environment_3u7sa"]
+background_mode = 2
+sky = SubResource("Sky_pyaqu")
+
+[sub_resource type="Curve3D" id="Curve3D_3u7sa"]
+closed = true
+_data = {
+"points": PackedVector3Array(0, 0, 0, 0, 0, 0, 5.766758, 0, 9.239684, 0, 0, 0, 0, 0, 0, 18.693851, 0, 9.427035, 0, 0, 0, 0, 0, 0, 18.506496, 0, 21.042683, 0, 0, 0, 0, 0, 0, 5.3920555, 0, 20.855335),
+"tilts": PackedFloat32Array(0, 0, 0, 0)
+}
+point_count = 4
+
+[node name="Mundo_Teste" type="Node3D"]
+
+[node name="Player" parent="." instance=ExtResource("1_o33cy")]
+transform = Transform3D(0.5, 0, 0, 0, 0.5, 0, 0, 0, 0.5, 0, 0.76401615, -19.849743)
+
+[node name="chao" type="StaticBody3D" parent="."]
+
+[node name="chao_modelo" type="MeshInstance3D" parent="chao"]
+mesh = SubResource("BoxMesh_i68q4")
+skeleton = NodePath("../..")
+
+[node name="chao_colisao" type="CollisionShape3D" parent="chao"]
+shape = SubResource("BoxShape3D_i68q4")
+
+[node name="DirectionalLight3D" type="DirectionalLight3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, -4.371139e-08, 1, 0, -1, -4.371139e-08, -0.025381088, 37.358055, 0)
+
+[node name="WorldEnvironment" type="WorldEnvironment" parent="."]
+environment = SubResource("Environment_3u7sa")
+
+[node name="moeda" parent="." instance=ExtResource("2_pyaqu")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 10, 2.3753653, 0)
+
+[node name="HUD" parent="." instance=ExtResource("3_3u7sa")]
+
+[node name="Path3D" type="Path3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 2.1032944, 0)
+curve = SubResource("Curve3D_3u7sa")
+
+[node name="Inimigo_simples" parent="Path3D" instance=ExtResource("4_pv0qo")]
+transform = Transform3D(-0.014491434, 0, -0.9998938, 0, 1, 0, 0.9998938, 0, -0.014491434, 5.766758, 0, 9.239684)
