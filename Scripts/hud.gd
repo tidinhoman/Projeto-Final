@@ -9,5 +9,5 @@ func _ready():
 	progress_bar.value = Globalvar.player_vida
 
 func _process(delta: float) -> void:
-	$total_moedas.text = str(Globalvar.total_moedas)
+	$total_moedas.text = str(Globalvar.total_pontos)
 	progress_bar.value = Globalvar.player_vida
