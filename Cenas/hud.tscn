@@ -56,3 +56,67 @@ value = 6.0
 show_percentage = false
 
 [node name="ControlFade" parent="." instance=ExtResource("2_1pfdj")]
+
+[node name="Panel" type="Panel" parent="."]
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -627.0
+offset_top = -373.0
+offset_right = 693.0
+offset_bottom = 445.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="pause_text" type="Label" parent="Panel"]
+layout_mode = 1
+anchors_preset = 5
+anchor_left = 0.5
+anchor_right = 0.5
+offset_left = -23.5
+offset_right = 23.5
+offset_bottom = 23.0
+grow_horizontal = 2
+theme_override_font_sizes/font_size = 76
+text = "Pause"
+
+[node name="retornar" type="Button" parent="Panel"]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -302.0
+offset_top = -44.0
+offset_right = 303.0
+offset_bottom = 77.0
+grow_horizontal = 2
+grow_vertical = 2
+focus_neighbor_top = NodePath("../voltar_menu")
+focus_neighbor_bottom = NodePath("../voltar_menu")
+theme_override_font_sizes/font_size = 60
+text = "Retornar para o jogo"
+
+[node name="voltar_menu" type="Button" parent="Panel"]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -299.0
+offset_top = 118.0
+offset_right = 301.0
+offset_bottom = 233.0
+grow_horizontal = 2
+grow_vertical = 2
+focus_neighbor_top = NodePath("../retornar")
+focus_neighbor_bottom = NodePath("../retornar")
+theme_override_font_sizes/font_size = 60
+text = "Voltar para o menu"
+
+[connection signal="button_down" from="Panel/retornar" to="." method="_on_retornar_button_down"]
+[connection signal="button_down" from="Panel/voltar_menu" to="." method="_on_voltar_menu_button_down"]

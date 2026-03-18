@@ -1,6 +1,7 @@
-[gd_scene load_steps=2 format=3 uid="uid://be2bpohj4hrri"]
+[gd_scene load_steps=3 format=3 uid="uid://be2bpohj4hrri"]
 
 [ext_resource type="Script" uid="uid://ch4ws0axremw1" path="res://Scripts/tela_venceu.gd" id="1_cp7wk"]
+[ext_resource type="PackedScene" uid="uid://bljmugc6vagby" path="res://Cenas/control_fade.tscn" id="2_u3eh2"]
 
 [node name="tela_venceu" type="Control"]
 layout_mode = 3
@@ -94,6 +95,9 @@ focus_neighbor_left = NodePath("../jogar_novamente")
 focus_neighbor_right = NodePath("../jogar_novamente")
 theme_override_font_sizes/font_size = 96
 text = "Voltar para o menu"
+
+[node name="ControlFade" parent="." instance=ExtResource("2_u3eh2")]
+layout_mode = 1
 
 [connection signal="button_down" from="jogar_novamente" to="." method="_on_jogar_novamente_button_down"]
 [connection signal="button_down" from="voltar_menu" to="." method="_on_voltar_menu_button_down"]

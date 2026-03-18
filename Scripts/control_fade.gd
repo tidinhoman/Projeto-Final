@@ -2,14 +2,15 @@ extends Control
 
 @onready var anim_fade: AnimationPlayer = $fade/AnimationPlayer
 
-
 func _ready() -> void:
-	Globalvar.fade_in = false
 	Globalvar.fade_out = false
+	Globalvar.fade_in = true
+	Fade_In()
 	
 func _process(delta: float) -> void:
 	Fade_In()
 	Fade_Out()
+	
 	
 func Fade_In():
 	if Globalvar.fade_in:

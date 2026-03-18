@@ -1,6 +1,7 @@
-[gd_scene load_steps=2 format=3 uid="uid://djunvumwvul1u"]
+[gd_scene load_steps=3 format=3 uid="uid://djunvumwvul1u"]
 
 [ext_resource type="Script" uid="uid://1gbxf8dugoox" path="res://Scripts/menu_inicial.gd" id="1_4ahfv"]
+[ext_resource type="PackedScene" uid="uid://bljmugc6vagby" path="res://Cenas/control_fade.tscn" id="2_sm8o4"]
 
 [node name="Menu_Inicial" type="Control"]
 layout_mode = 3
@@ -117,6 +118,9 @@ focus_neighbor_top = NodePath("../opcoes")
 focus_neighbor_bottom = NodePath("../novoJogo")
 theme_override_font_sizes/font_size = 61
 text = "Sair"
+
+[node name="ControlFade" parent="." instance=ExtResource("2_sm8o4")]
+layout_mode = 1
 
 [connection signal="button_down" from="Panel/novoJogo" to="." method="_on_novo_jogo_button_down"]
 [connection signal="button_down" from="Panel/carregarJogo" to="." method="_on_carregar_jogo_button_down"]
