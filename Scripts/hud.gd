@@ -11,3 +11,7 @@ func _ready():
 func _process(delta: float) -> void:
 	$total_moedas.text = str(Globalvar.total_pontos)
 	progress_bar.value = Globalvar.player_vida
+	
+	if Globalvar.player_morreu:
+		await get_tree().create_timer(1.5).timeout
+		Globalvar.fade_out = true

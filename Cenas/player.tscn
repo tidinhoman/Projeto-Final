@@ -702,7 +702,7 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 2.9376216, 0)
 shape = SubResource("CapsuleShape3D_pmvhq")
 
 [node name="Camera3D" type="Camera3D" parent="."]
-transform = Transform3D(-2, -5.1411643e-08, 1.6711617e-07, 8.867288e-09, 1.8793017, 0.6842699, -1.7462057e-07, 0.6842699, -1.8793017, 0.08676672, 8.720705, -10.717443)
+transform = Transform3D(-2, -5.1411643e-08, 1.6711617e-07, 1.3724312e-08, 1.8595273, 0.73631406, -1.743061e-07, 0.73631406, -1.8595273, 0.08676672, 9.9440155, -11.878231)
 
 [node name="player_hitbox" type="Area3D" parent="."]
 

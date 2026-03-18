@@ -1,6 +1,7 @@
-[gd_scene load_steps=4 format=3 uid="uid://87rkp1xash2k"]
+[gd_scene load_steps=5 format=3 uid="uid://87rkp1xash2k"]
 
 [ext_resource type="Script" uid="uid://d3yunfn41626" path="res://Scripts/hud.gd" id="1_kgovw"]
+[ext_resource type="PackedScene" uid="uid://bljmugc6vagby" path="res://Cenas/control_fade.tscn" id="2_1pfdj"]
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_kgovw"]
 bg_color = Color(0.8719275, 0.050708726, 0.012920001, 1)
@@ -53,3 +54,5 @@ theme_override_styles/fill = SubResource("StyleBoxFlat_1pfdj")
 max_value = 6.0
 value = 6.0
 show_percentage = false
+
+[node name="ControlFade" parent="." instance=ExtResource("2_1pfdj")]

@@ -7,7 +7,6 @@ var andando = false
 var esta_pulando = false
 var esta_atacando = false
 var tomou_dano = false
-var morreu = false
 var morte_processada = false
 
 @onready var anim: AnimationPlayer = $Armature/Skeleton3D/AnimationPlayer
@@ -17,12 +16,12 @@ func _ready() -> void:
 	esta_atacando = false
 	hitbox.disabled = true
 	tomou_dano = false
-	morreu = false
+	Globalvar.player_morreu = false
 	morte_processada = false
 	Globalvar.player_vida = 6
 
 func _physics_process(delta: float) -> void:
-	if morreu:
+	if Globalvar.player_morreu:
 		animacao()
 		morte()
 		return
@@ -31,11 +30,11 @@ func _physics_process(delta: float) -> void:
 	ataque()
 	animacao()
 	
-	if Globalvar.player_vida <= 0 and not morreu:
+	if Globalvar.player_vida <= 0 and not Globalvar.player_morreu:
 		morte()
 
 func movimentacao(delta: float):
-	if esta_atacando or morreu:
+	if esta_atacando or Globalvar.player_morreu:
 		return
 		
 	if not is_on_floor():
@@ -71,7 +70,7 @@ func rotacionar(direction: Vector3, delta: float):
 	$player_hitbox.look_at(posicao_alvo, Vector3.UP)
 
 func ataque():
-	if esta_pulando or esta_atacando or morreu:
+	if esta_pulando or esta_atacando or Globalvar.player_morreu:
 		return
 
 	if Input.is_action_just_pressed("ataque"):
@@ -85,17 +84,15 @@ func ataque():
 		andando = true
 
 func animacao():
-	if morreu:
+	if Globalvar.player_morreu or tomou_dano:
 		return
 	
 	if esta_pulando:
 		anim.play("Jump")
-	elif andando and not morreu:
+	elif andando:
 		anim.play("Run")
 	elif esta_atacando:
 		anim.play("Attack")
-	elif tomou_dano:
-		anim.play("Hurt")
 	else:
 		anim.play("Idle")
 
@@ -103,6 +100,7 @@ func _on_player_hurtbox_area_entered(area: Area3D) -> void:
 	if area.name == "inimigo1_hitbox":
 		tomou_dano = true
 		Globalvar.player_vida -= 1
+		anim.play("Hurt")
 		
 		if Globalvar.player_vida <= 0:
 			morte()
@@ -115,7 +113,7 @@ func morte():
 		return
 		
 	morte_processada = true
-	morreu = true
+	Globalvar.player_morreu = true
 	
 	esta_atacando = false
 	hitbox.disabled = true

@@ -421,16 +421,16 @@ _data = {
 }
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_c20yh"]
-size = Vector3(1.9082031, 1.6120453, 2.6892948)
+size = Vector3(2.0126953, 1.6120453, 2.6892948)
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_j5a8x"]
-size = Vector3(1.3965454, 1.4204712, 1.8674316)
+size = Vector3(1.4634094, 1.4204712, 1.8674316)
 
 [node name="Inimigo_simples" type="PathFollow3D"]
 script = ExtResource("1_j5a8x")
 
 [node name="Armature" type="Node3D" parent="."]
-transform = Transform3D(-0.3, 0, -2.6226834e-08, 0, 0.3, 0, 2.6226834e-08, 0, -0.3, 0, 0.6861882, -0.59370494)
+transform = Transform3D(-0.4, 0, -6.039832e-08, 0, 0.4, 0, 6.039832e-08, 0, -0.4, 0, 0.6861882, -0.59370494)
 
 [node name="Skeleton3D" type="Skeleton3D" parent="Armature"]
 bones/0/name = "buxinho"
@@ -567,14 +567,14 @@ libraries = {
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.5996299, 0)
 
 [node name="colisao_hurtbox" type="CollisionShape3D" parent="inimigo1_hurtbox"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.01953125, 0.22930145, 0.10109615)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.009277344, 0.22930145, 0.10109615)
 shape = SubResource("BoxShape3D_c20yh")
 
 [node name="inimigo1_hitbox" type="Area3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.037657738, 0, 0.034573734)
 
 [node name="colisao_hitbox" type="CollisionShape3D" parent="inimigo1_hitbox"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.08938599, 0.7316072, -0.0045166016)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.05595398, 0.7316072, -0.0045166016)
 shape = SubResource("BoxShape3D_j5a8x")
 
 [connection signal="area_entered" from="inimigo1_hitbox" to="." method="_on_hitbox_area_entered"]
