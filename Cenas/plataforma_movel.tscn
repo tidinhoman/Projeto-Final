@@ -1,0 +1,20 @@
+[gd_scene load_steps=4 format=3 uid="uid://dhdl0ueb3a1qn"]
+
+[ext_resource type="Script" uid="uid://cbwoxi6ypu86r" path="res://Scripts/plataforma_movel.gd" id="1_h67r2"]
+
+[sub_resource type="BoxMesh" id="BoxMesh_havic"]
+size = Vector3(6, 0.2, 6)
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_h67r2"]
+size = Vector3(6, 0.2, 6)
+
+[node name="plataforma_movel" type="PathFollow3D"]
+script = ExtResource("1_h67r2")
+
+[node name="plataforma" type="StaticBody3D" parent="."]
+
+[node name="plataforma_modelo" type="MeshInstance3D" parent="plataforma"]
+mesh = SubResource("BoxMesh_havic")
+
+[node name="plataforma_fisico" type="CollisionShape3D" parent="plataforma"]
+shape = SubResource("BoxShape3D_h67r2")

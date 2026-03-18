@@ -1,9 +1,10 @@
-[gd_scene load_steps=11 format=3 uid="uid://j8gmr1dthm8r"]
+[gd_scene load_steps=13 format=3 uid="uid://j8gmr1dthm8r"]
 
 [ext_resource type="PackedScene" uid="uid://jtphp3i56bxr" path="res://Cenas/player.tscn" id="1_o33cy"]
 [ext_resource type="PackedScene" uid="uid://bthi7j7ixt663" path="res://Cenas/moeda.tscn" id="2_pyaqu"]
 [ext_resource type="PackedScene" uid="uid://87rkp1xash2k" path="res://Cenas/hud.tscn" id="3_3u7sa"]
 [ext_resource type="PackedScene" uid="uid://blnb84bo0pq5s" path="res://Cenas/inimigo_simples.tscn" id="4_pv0qo"]
+[ext_resource type="PackedScene" uid="uid://dhdl0ueb3a1qn" path="res://Cenas/plataforma_movel.tscn" id="5_wtxnm"]
 
 [sub_resource type="BoxMesh" id="BoxMesh_i68q4"]
 size = Vector3(50, 1, 50)
@@ -27,6 +28,13 @@ _data = {
 "tilts": PackedFloat32Array(0, 0, 0, 0)
 }
 point_count = 4
+
+[sub_resource type="Curve3D" id="Curve3D_pv0qo"]
+_data = {
+"points": PackedVector3Array(0, 0, 0, 0, 0, 0, -24.016863, 0.56812835, 24.72877, 0, 0, 0, 0, 0, 0, -23.893068, 0.68506193, 10.445068, 0, 0, 0, 0, 0, 0, -24.020693, 0.5642066, 24.732565),
+"tilts": PackedFloat32Array(0, 0, 0)
+}
+point_count = 3
 
 [node name="Mundo_Teste" type="Node3D"]
 
@@ -58,4 +66,12 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.705, 0)
 curve = SubResource("Curve3D_3u7sa")
 
 [node name="Inimigo_simples" parent="Path3D" instance=ExtResource("4_pv0qo")]
-transform = Transform3D(-0.014491404, 0, -0.9998917, 0, 1, 0, 0.9998917, 0, -0.014491404, 5.766758, 0, 9.239684)
+transform = Transform3D(-0.01449139, 0, -0.99989074, 0, 1, 0, 0.99989074, 0, -0.01449139, 5.766758, 0, 9.239684)
+
+[node name="Path3D2" type="Path3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 4.2454586, 1.0173111, -7.8959)
+curve = SubResource("Curve3D_pv0qo")
+
+[node name="plataforma_movel" parent="Path3D2" instance=ExtResource("5_wtxnm")]
+transform = Transform3D(1, 0, 0, 0, 0.9999999, 0, 0, 0, 1, -24.016863, 0.56812835, 24.72877)
+rotation_mode = 0

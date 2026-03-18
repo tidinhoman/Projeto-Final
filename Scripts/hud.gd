@@ -7,6 +7,7 @@ extends CanvasLayer
 func _ready():
 	progress_bar.max_value = vida_maxima
 	progress_bar.value = Globalvar.player_vida
+	Globalvar.total_pontos = 0
 
 func _process(delta: float) -> void:
 	$total_moedas.text = str(Globalvar.total_pontos)

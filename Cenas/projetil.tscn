@@ -11,5 +11,5 @@ size = Vector3(0.1, 0.1, 0.1)
 [node name="projetil_hitbox" type="CollisionShape3D" parent="."]
 shape = SubResource("BoxShape3D_3a78q")
 
-[node name="projetil_model" type="MeshInstance3D" parent="."]
+[node name="projetil_modelo" type="MeshInstance3D" parent="."]
 mesh = SubResource("BoxMesh_bb2x1")

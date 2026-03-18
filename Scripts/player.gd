@@ -121,7 +121,7 @@ func morte():
 	
 	anim.play("Death")
 	
-	await get_tree().create_timer(4.0).timeout
+	await get_tree().create_timer(3.5).timeout
 	
 	if is_inside_tree():
 		get_tree().change_scene_to_file("res://Cenas/tela_perdeu.tscn")
