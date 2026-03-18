@@ -1,0 +1,15 @@
+[gd_scene load_steps=3 format=3 uid="uid://dt67ktpo6nqcg"]
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_3a78q"]
+size = Vector3(0.2, 0.2, 0.2)
+
+[sub_resource type="BoxMesh" id="BoxMesh_bb2x1"]
+size = Vector3(0.1, 0.1, 0.1)
+
+[node name="projetil" type="Area3D"]
+
+[node name="projetil_hitbox" type="CollisionShape3D" parent="."]
+shape = SubResource("BoxShape3D_3a78q")
+
+[node name="projetil_model" type="MeshInstance3D" parent="."]
+mesh = SubResource("BoxMesh_bb2x1")

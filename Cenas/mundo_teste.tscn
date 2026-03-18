@@ -54,8 +54,8 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 10, 2.3753653, 0)
 [node name="HUD" parent="." instance=ExtResource("3_3u7sa")]
 
 [node name="Path3D" type="Path3D" parent="."]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 2.1032944, 0)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.43808556, 0)
 curve = SubResource("Curve3D_3u7sa")
 
 [node name="Inimigo_simples" parent="Path3D" instance=ExtResource("4_pv0qo")]
-transform = Transform3D(-0.014491427, 0, -0.99989325, 0, 1, 0, 0.99989325, 0, -0.014491427, 5.766758, 0, 9.239684)
+transform = Transform3D(-0.014491417, 0, -0.9998926, 0, 1, 0, 0.9998926, 0, -0.014491417, 5.766758, 0, 9.239684)
