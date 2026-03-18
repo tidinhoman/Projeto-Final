@@ -1,15 +1,15 @@
-[gd_scene load_steps=12 format=4 uid="uid://blnb84bo0pq5s"]
+[gd_scene load_steps=12 format=4 uid="uid://vy35tns35in7"]
 
-[ext_resource type="Texture2D" uid="uid://cr4b1gxvl58cg" path="res://Assets/Lobinho/lobaoo_Lonhaotex.png" id="1_c20yh"]
-[ext_resource type="Script" uid="uid://cl6a4bfiqvpy" path="res://Scripts/inimigo_simples.gd" id="1_j5a8x"]
+[ext_resource type="Texture2D" uid="uid://cr4b1gxvl58cg" path="res://Assets/Lobinho/lobaoo_Lonhaotex.png" id="1_2elio"]
+[ext_resource type="Script" uid="uid://b234g0i6glqay" path="res://Scripts/inimigo_atirador.gd" id="1_heirm"]
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_u1m8c"]
 resource_name = "lonhaotex"
 cull_mode = 2
-albedo_texture = ExtResource("1_c20yh")
+albedo_texture = ExtResource("1_2elio")
 texture_filter = 2
 
-[sub_resource type="ArrayMesh" id="ArrayMesh_j5a8x"]
+[sub_resource type="ArrayMesh" id="ArrayMesh_heirm"]
 resource_name = "lobaoo_Cube_005"
 _surfaces = [{
 "aabb": AABB(-3.186252, -2.307288, -6.3272004, 6.3945017, 4.850405, 8.44282),
@@ -29,7 +29,7 @@ _surfaces = [{
 }]
 blend_shape_mode = 0
 
-[sub_resource type="Skin" id="Skin_87pcl"]
+[sub_resource type="Skin" id="Skin_bnk65"]
 resource_name = "Skin"
 bind_count = 17
 bind/0/name = &"buxinho"
@@ -420,14 +420,14 @@ _data = {
 &"Walk": SubResource("Animation_78u1v")
 }
 
-[sub_resource type="BoxShape3D" id="BoxShape3D_c20yh"]
-size = Vector3(1.9082031, 1.6120453, 2.6892948)
+[sub_resource type="BoxShape3D" id="BoxShape3D_2elio"]
+size = Vector3(2.1926575, 1.5088501, 2.7260742)
 
-[sub_resource type="BoxShape3D" id="BoxShape3D_j5a8x"]
-size = Vector3(1.3965454, 1.4204712, 1.8674316)
+[sub_resource type="BoxShape3D" id="BoxShape3D_heirm"]
+size = Vector3(1.6691895, 1.227417, 1.9511719)
 
-[node name="Inimigo_simples" type="PathFollow3D"]
-script = ExtResource("1_j5a8x")
+[node name="inimigo_atirador" type="CharacterBody3D"]
+script = ExtResource("1_heirm")
 
 [node name="Armature" type="Node3D" parent="."]
 transform = Transform3D(-0.3, 0, -2.6226834e-08, 0, 0.3, 0, 2.6226834e-08, 0, -0.3, 0, 0.6861882, -0.59370494)
@@ -554,8 +554,8 @@ bones/16/rotation = Quaternion(-0.68522394, -0.09762335, -0.102293864, 0.7144745
 bones/16/scale = Vector3(1, 1, 1)
 
 [node name="Lonhinho" type="MeshInstance3D" parent="Armature/Skeleton3D"]
-mesh = SubResource("ArrayMesh_j5a8x")
-skin = SubResource("Skin_87pcl")
+mesh = SubResource("ArrayMesh_heirm")
+skin = SubResource("Skin_bnk65")
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="Armature"]
 root_node = NodePath("../..")
@@ -563,19 +563,14 @@ libraries = {
 &"": SubResource("AnimationLibrary_dhqe8")
 }
 
-[node name="inimigo1_hurtbox" type="Area3D" parent="."]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.5996299, 0)
+[node name="inimigo2_hurtbox" type="Area3D" parent="."]
 
-[node name="colisao_hurtbox" type="CollisionShape3D" parent="inimigo1_hurtbox"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.01953125, 0.22930145, 0.10109615)
-shape = SubResource("BoxShape3D_c20yh")
+[node name="colisao_hurtbox" type="CollisionShape3D" parent="inimigo2_hurtbox"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.020217896, 0.7640686, 0.032470703)
+shape = SubResource("BoxShape3D_2elio")
 
-[node name="inimigo1_hitbox" type="Area3D" parent="."]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.037657738, 0, 0.034573734)
+[node name="inimigo2_hitbox" type="Area3D" parent="."]
 
-[node name="colisao_hitbox" type="CollisionShape3D" parent="inimigo1_hitbox"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.08938599, 0.7316072, -0.0045166016)
-shape = SubResource("BoxShape3D_j5a8x")
-
-[connection signal="area_entered" from="inimigo1_hitbox" to="." method="_on_hitbox_area_entered"]
-[connection signal="area_exited" from="inimigo1_hitbox" to="." method="_on_hitbox_area_exited"]
+[node name="colisao_hitbox" type="CollisionShape3D" parent="inimigo2_hitbox"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.00012207031, 0.61309814, 0.017578125)
+shape = SubResource("BoxShape3D_heirm")

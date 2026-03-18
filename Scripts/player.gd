@@ -8,6 +8,7 @@ var esta_pulando = false
 var esta_atacando = false
 var tomou_dano = false
 var morreu = false
+var morte_processada = false
 
 @onready var anim: AnimationPlayer = $Armature/Skeleton3D/AnimationPlayer
 @onready var hitbox: CollisionShape3D = $player_hitbox/colisao_hitbox
@@ -17,13 +18,21 @@ func _ready() -> void:
 	hitbox.disabled = true
 	tomou_dano = false
 	morreu = false
+	morte_processada = false
 	Globalvar.player_vida = 6
 
 func _physics_process(delta: float) -> void:
+	if morreu:
+		animacao()
+		morte()
+		return
+	
 	movimentacao(delta)
 	ataque()
 	animacao()
-	morte()
+	
+	if Globalvar.player_vida <= 0 and not morreu:
+		morte()
 
 func movimentacao(delta: float):
 	if esta_atacando or morreu:
@@ -76,16 +85,17 @@ func ataque():
 		andando = true
 
 func animacao():
-	if esta_pulando and not morreu:
+	if morreu:
+		return
+	
+	if esta_pulando:
 		anim.play("Jump")
 	elif andando and not morreu:
 		anim.play("Run")
-	elif esta_atacando and not morreu:
+	elif esta_atacando:
 		anim.play("Attack")
 	elif tomou_dano:
 		anim.play("Hurt")
-	elif morreu:
-		anim.play("Death")
 	else:
 		anim.play("Idle")
 
@@ -93,11 +103,27 @@ func _on_player_hurtbox_area_entered(area: Area3D) -> void:
 	if area.name == "inimigo1_hitbox":
 		tomou_dano = true
 		Globalvar.player_vida -= 1
-		await get_tree().create_timer(0.8).timeout
-		tomou_dano = false
+		
+		if Globalvar.player_vida <= 0:
+			morte()
+		else:
+			await get_tree().create_timer(0.8).timeout
+			tomou_dano = false
 		
 func morte():
-	if Globalvar.player_vida <= 0:
-		morreu = true
-		await get_tree().create_timer(5.0).timeout
+	if morte_processada:
+		return
+		
+	morte_processada = true
+	morreu = true
+	
+	esta_atacando = false
+	hitbox.disabled = true
+	velocity = Vector3.ZERO
+	
+	anim.play("Death")
+	
+	await get_tree().create_timer(4.0).timeout
+	
+	if is_inside_tree():
 		get_tree().change_scene_to_file("res://Cenas/tela_perdeu.tscn")
