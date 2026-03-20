@@ -1,0 +1,20 @@
+[gd_scene load_steps=4 format=3 uid="uid://5435x46rkv0m"]
+
+[ext_resource type="Script" uid="uid://bdm1awfwpsjgr" path="res://Scripts/final_fase.gd" id="1_jstu0"]
+
+[sub_resource type="PrismMesh" id="PrismMesh_ojgqb"]
+
+[sub_resource type="SphereShape3D" id="SphereShape3D_jstu0"]
+radius = 3.020648
+
+[node name="final_fase" type="Area3D"]
+script = ExtResource("1_jstu0")
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="."]
+transform = Transform3D(3, 0, 0, 0, 3, 0, 0, 0, 3, 0, 0, 0)
+mesh = SubResource("PrismMesh_ojgqb")
+
+[node name="final_colisao" type="CollisionShape3D" parent="."]
+shape = SubResource("SphereShape3D_jstu0")
+
+[connection signal="area_entered" from="." to="." method="_on_area_entered"]

@@ -1,15 +1,13 @@
-[gd_scene load_steps=11 format=3 uid="uid://8o1la5jgjuo8"]
+[gd_scene load_steps=9 format=3 uid="uid://8o1la5jgjuo8"]
 
 [ext_resource type="PackedScene" uid="uid://jtphp3i56bxr" path="res://Cenas/player.tscn" id="1_48g7u"]
 [ext_resource type="PackedScene" uid="uid://87rkp1xash2k" path="res://Cenas/hud.tscn" id="3_u30cq"]
-[ext_resource type="PackedScene" uid="uid://blnb84bo0pq5s" path="res://Cenas/inimigo_simples.tscn" id="4_mij0q"]
-[ext_resource type="PackedScene" uid="uid://vy35tns35in7" path="res://Cenas/inimigo_atirador.tscn" id="5_48g7u"]
 [ext_resource type="PackedScene" uid="uid://bljmugc6vagby" path="res://Cenas/control_fade.tscn" id="6_efelf"]
 
-[sub_resource type="BoxMesh" id="BoxMesh_i68q4"]
+[sub_resource type="BoxShape3D" id="BoxShape3D_ywmpn"]
 size = Vector3(50, 1, 50)
 
-[sub_resource type="BoxShape3D" id="BoxShape3D_i68q4"]
+[sub_resource type="BoxMesh" id="BoxMesh_mij0q"]
 size = Vector3(50, 1, 50)
 
 [sub_resource type="ProceduralSkyMaterial" id="ProceduralSkyMaterial_o33cy"]
@@ -23,17 +21,16 @@ sky = SubResource("Sky_pyaqu")
 
 [node name="Fase" type="Node3D"]
 
+[node name="StaticBody3D" type="StaticBody3D" parent="."]
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="StaticBody3D"]
+shape = SubResource("BoxShape3D_ywmpn")
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="StaticBody3D"]
+mesh = SubResource("BoxMesh_mij0q")
+
 [node name="Player" parent="." instance=ExtResource("1_48g7u")]
 transform = Transform3D(0.5, 0, 0, 0, 0.5, 0, 0, 0, 0.5, 0, 1.5468659, -19.849743)
-
-[node name="chao" type="StaticBody3D" parent="."]
-
-[node name="chao_modelo" type="MeshInstance3D" parent="chao"]
-mesh = SubResource("BoxMesh_i68q4")
-skeleton = NodePath("../..")
-
-[node name="chao_colisao" type="CollisionShape3D" parent="chao"]
-shape = SubResource("BoxShape3D_i68q4")
 
 [node name="DirectionalLight3D" type="DirectionalLight3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, -4.371139e-08, 1, 0, -1, -4.371139e-08, -0.025381088, 37.358055, 0)
@@ -44,9 +41,3 @@ environment = SubResource("Environment_3u7sa")
 [node name="HUD" parent="." instance=ExtResource("3_u30cq")]
 
 [node name="ControlFade" parent="." instance=ExtResource("6_efelf")]
-
-[node name="Inimigo_simples" parent="." instance=ExtResource("4_mij0q")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -13.609592, 0.6272745, 0)
-
-[node name="inimigo_atirador" parent="." instance=ExtResource("5_48g7u")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 8.429125, 1.2562585, 0)

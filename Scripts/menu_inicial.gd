@@ -14,8 +14,6 @@ func _on_carregar_jogo_button_down() -> void:
 	pass
 
 func _on_opcoes_button_down() -> void:
-	if is_inside_tree():
-		get_tree().change_scene_to_file("res://Cenas/tela_opcoes.tscn")
 	pass
 
 func _on_sair_button_down() -> void:

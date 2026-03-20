@@ -1,31 +1,161 @@
-[gd_scene load_steps=5 format=3 uid="uid://cn6s8ticcubm8"]
+[gd_scene load_steps=10 format=3 uid="uid://cn6s8ticcubm8"]
 
 [ext_resource type="Script" uid="uid://bsnifdojc2jfu" path="res://Scripts/inimigo_perseguidor.gd" id="1_y8yg2"]
-
-[sub_resource type="CapsuleMesh" id="CapsuleMesh_bhdnt"]
+[ext_resource type="PackedScene" uid="uid://6gie3iagwnm7" path="res://Assets/Inimigos/bixo3.glb" id="2_1ty6n"]
 
 [sub_resource type="CapsuleShape3D" id="CapsuleShape3D_bhdnt"]
+radius = 0.80126953
+height = 2.5534668
 
 [sub_resource type="CapsuleShape3D" id="CapsuleShape3D_y8yg2"]
-radius = 0.7055664
-height = 2.208374
+radius = 1.1147461
+height = 2.9739685
+
+[sub_resource type="Animation" id="Animation_e8f1e"]
+resource_name = "andando"
+loop_mode = 1
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("bixo3:rotation")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.5, 1),
+"transitions": PackedFloat32Array(1, 1, 1),
+"update": 0,
+"values": [Vector3(0, -3.1415927, -0.27925268), Vector3(0, -3.1415927, 0.27925268), Vector3(0, -3.1415927, -0.27925268)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("bixo3:position")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 1),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Vector3(0, -1.1679583, 0), Vector3(0, -1.1679583, 0)]
+}
+
+[sub_resource type="Animation" id="Animation_xk74n"]
+resource_name = "batendo"
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("bixo3:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.5, 1),
+"transitions": PackedFloat32Array(1, 1, 1),
+"update": 0,
+"values": [Vector3(0, -1.1679583, 0), Vector3(0, 1.2954278, 2.4934278), Vector3(0, -1.1679583, 0)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("bixo3:rotation")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 0.5, 1),
+"transitions": PackedFloat32Array(1, 1, 1),
+"update": 0,
+"values": [Vector3(0, -3.1415927, 0), Vector3(1.5707964, 3.1415927, 0), Vector3(0, -3.1415927, 0)]
+}
+
+[sub_resource type="Animation" id="Animation_6sge7"]
+resource_name = "levantando"
+length = 0.5
+loop_mode = 1
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("bixo3:rotation")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.5),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Vector3(-0.55850536, -3.1415927, 0), Vector3(0, -3.1415925, 0)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("bixo3:position")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 0.5),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Vector3(0, -1.1679583, 0), Vector3(0, -1.1679583, 0)]
+}
+
+[sub_resource type="Animation" id="Animation_1ty6n"]
+resource_name = "tomando_dano"
+length = 0.5
+loop_mode = 1
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("bixo3:rotation")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.5),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Vector3(0, -3.1415925, 0), Vector3(-0.55850536, -3.1415927, 0)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("bixo3:position")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 0.5),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Vector3(0, -1.1679583, 0), Vector3(0, -1.1679583, 0)]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_e8f1e"]
+_data = {
+&"andando": SubResource("Animation_e8f1e"),
+&"batendo": SubResource("Animation_xk74n"),
+&"levantando": SubResource("Animation_6sge7"),
+&"tomando_dano": SubResource("Animation_1ty6n")
+}
 
 [node name="inimigo_perseguidor" type="CharacterBody3D"]
 script = ExtResource("1_y8yg2")
 
-[node name="inimigo3_modelo" type="MeshInstance3D" parent="."]
-mesh = SubResource("CapsuleMesh_bhdnt")
-
 [node name="inimigo3_hitbox" type="Area3D" parent="."]
 
 [node name="colisao_hitbox" type="CollisionShape3D" parent="inimigo3_hitbox"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.025390625, 0)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.2869391, 0)
 shape = SubResource("CapsuleShape3D_bhdnt")
 
 [node name="inimigo3_hurtbox" type="Area3D" parent="."]
 
 [node name="colisao_hurtbox" type="CollisionShape3D" parent="inimigo3_hurtbox"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.09222412, 0)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.4349592, 0)
 shape = SubResource("CapsuleShape3D_y8yg2")
 
+[node name="bixo3" parent="." instance=ExtResource("2_1ty6n")]
+transform = Transform3D(-1, 0, -1.509958e-07, 0, 1, 0, 1.509958e-07, 0, -1, 0, -1.1679583, 0)
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
+libraries = {
+&"": SubResource("AnimationLibrary_e8f1e")
+}
+
+[connection signal="area_entered" from="inimigo3_hitbox" to="." method="_on_inimigo_3_hitbox_area_entered"]
+[connection signal="area_exited" from="inimigo3_hitbox" to="." method="_on_inimigo_3_hitbox_area_exited"]
 [connection signal="area_entered" from="inimigo3_hurtbox" to="." method="_on_inimigo_3_hurtbox_area_entered"]
+[connection signal="area_exited" from="inimigo3_hurtbox" to="." method="_on_inimigo_3_hurtbox_area_exited"]
