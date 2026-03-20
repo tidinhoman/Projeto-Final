@@ -16,7 +16,8 @@ func _process(delta: float) -> void:
 
 
 func _on_jogar_novamente_button_down() -> void:
-	pass
+	if is_inside_tree():
+		get_tree().change_scene_to_file("res://Cenas/fase.tscn")
 
 func _on_voltar_menu_button_down() -> void:
 	if is_inside_tree():
