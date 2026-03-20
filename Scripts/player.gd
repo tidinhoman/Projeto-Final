@@ -1,7 +1,7 @@
 extends CharacterBody3D
 
 @export var velocidade = 10.0
-@export var velocidade_pulo = 4.5
+@export var velocidade_pulo = 5.0
 
 var andando = false
 var esta_pulando = false
@@ -97,7 +97,7 @@ func animacao():
 		anim.play("Idle")
 
 func _on_player_hurtbox_area_entered(area: Area3D) -> void:
-	if area.name == "inimigo1_hitbox":
+	if area.name == "inimigo1_hitbox" or area.name == "projetil" or area.name == "inimigo3_hitbox":
 		tomou_dano = true
 		Globalvar.player_vida -= 1
 		anim.play("Hurt")

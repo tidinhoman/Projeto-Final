@@ -2,17 +2,20 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://vg6t34w4u2ib"
-path.s3tc="res://.godot/imported/moeda_ouro_1.png-48edabec9773a223964c8aa2eecb944b.s3tc.ctex"
+uid="uid://dqino75fdeci8"
+path.s3tc="res://.godot/imported/bixo_images.png-ec2d0591b01c36986243a19e4112f702.s3tc.ctex"
 metadata={
 "imported_formats": ["s3tc_bptc"],
 "vram_texture": true
 }
+generator_parameters={
+"md5": "bac8b67e047f857eaf835c6deb2ff7c1"
+}
 
 [deps]
 
-source_file="res://Assets/Moeda/moeda_ouro_1.png"
-dest_files=["res://.godot/imported/moeda_ouro_1.png-48edabec9773a223964c8aa2eecb944b.s3tc.ctex"]
+source_file="res://Assets/Inimigos/bixo_images.png"
+dest_files=["res://.godot/imported/bixo_images.png-ec2d0591b01c36986243a19e4112f702.s3tc.ctex"]
 
 [params]
 

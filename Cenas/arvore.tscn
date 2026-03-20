@@ -1,0 +1,75 @@
+[gd_scene load_steps=7 format=3 uid="uid://bgln2a362bspu"]
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_tevu5"]
+albedo_color = Color(0.33154717, 0.09714293, 0.028472058, 1)
+
+[sub_resource type="BoxMesh" id="BoxMesh_n8pdw"]
+material = SubResource("StandardMaterial3D_tevu5")
+size = Vector3(1, 6, 1)
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_n8pdw"]
+albedo_color = Color(0, 0.53333336, 0, 1)
+
+[sub_resource type="SphereMesh" id="SphereMesh_i3peu"]
+material = SubResource("StandardMaterial3D_n8pdw")
+radius = 1.5
+height = 3.0
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_i3peu"]
+albedo_color = Color(0, 0.5019608, 0, 1)
+
+[sub_resource type="SphereMesh" id="SphereMesh_cdbsu"]
+material = SubResource("StandardMaterial3D_i3peu")
+radius = 1.0
+height = 2.0
+
+[node name="arvore" type="Node3D"]
+
+[node name="tronco" type="MeshInstance3D" parent="."]
+mesh = SubResource("BoxMesh_n8pdw")
+
+[node name="folha" type="MeshInstance3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 2.9902406, 0.9502311)
+mesh = SubResource("SphereMesh_i3peu")
+
+[node name="folha2" type="MeshInstance3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1.5745392, 3.3893533, 0.9502311)
+mesh = SubResource("SphereMesh_cdbsu")
+
+[node name="folha3" type="MeshInstance3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1.6831254, 3.6425853, 0.9502311)
+mesh = SubResource("SphereMesh_i3peu")
+skeleton = NodePath("../MeshInstance3D2")
+
+[node name="folha4" type="MeshInstance3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.63294816, 4.984199, 0.9502311)
+mesh = SubResource("SphereMesh_i3peu")
+skeleton = NodePath("../MeshInstance3D2")
+
+[node name="folha5" type="MeshInstance3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1.5045338, 5.5632854, 0.9502311)
+mesh = SubResource("SphereMesh_cdbsu")
+skeleton = NodePath("../MeshInstance3D3")
+
+[node name="folha6" type="MeshInstance3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.30216026, 3.5173192, -0.9892118)
+mesh = SubResource("SphereMesh_i3peu")
+
+[node name="folha7" type="MeshInstance3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1.6642854, 3.3893533, -0.9892118)
+mesh = SubResource("SphereMesh_cdbsu")
+
+[node name="folha8" type="MeshInstance3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1.8057585, 4.3864284, -0.9892118)
+mesh = SubResource("SphereMesh_i3peu")
+skeleton = NodePath("../MeshInstance3D2")
+
+[node name="folha9" type="MeshInstance3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1.443465, 5.3821807, -0.9892118)
+mesh = SubResource("SphereMesh_i3peu")
+skeleton = NodePath("../MeshInstance3D2")
+
+[node name="folha10" type="MeshInstance3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.63196397, 5.5632854, -0.9892118)
+mesh = SubResource("SphereMesh_cdbsu")
+skeleton = NodePath("../MeshInstance3D3")

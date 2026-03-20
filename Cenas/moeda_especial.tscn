@@ -1,12 +1,18 @@
-[gd_scene load_steps=10 format=4 uid="uid://bthi7j7ixt663"]
+[gd_scene load_steps=11 format=4 uid="uid://umga6y1qfk8w"]
 
-[ext_resource type="Script" uid="uid://b5by8g5c42k33" path="res://Scripts/moeda.gd" id="1_hy07s"]
-[ext_resource type="Texture2D" uid="uid://dcau73r6fy8h8" path="res://Assets/Moeda/Moneda_gold-gradient-metal-texture-background-decorative-background-elegant-gold-background-yellow-light-bold-gold-texture-aluminum-metal-shine-grunge-texture-free-photo.jpg" id="2_hy07s"]
+[ext_resource type="Script" uid="uid://j8uk20hq5q64" path="res://Scripts/moeda_especial.gd" id="1_f01xh"]
+[ext_resource type="Texture2D" uid="uid://dcau73r6fy8h8" path="res://Assets/Moeda/Moneda_gold-gradient-metal-texture-background-decorative-background-elegant-gold-background-yellow-light-bold-gold-texture-aluminum-metal-shine-grunge-texture-free-photo.jpg" id="1_rmvcd"]
+
+[sub_resource type="SphereShape3D" id="SphereShape3D_rmvcd"]
+radius = 0.84498125
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_f01xh"]
+albedo_color = Color(0.827451, 0.08627451, 0.09019608, 1)
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_qusrn"]
 resource_name = "Material.002"
 cull_mode = 2
-albedo_texture = ExtResource("2_hy07s")
+albedo_texture = ExtResource("1_rmvcd")
 roughness = 0.5
 
 [sub_resource type="ArrayMesh" id="ArrayMesh_46jc5"]
@@ -23,7 +29,7 @@ _surfaces = [{
 }]
 blend_shape_mode = 0
 
-[sub_resource type="ArrayMesh" id="ArrayMesh_fb2rl"]
+[sub_resource type="ArrayMesh" id="ArrayMesh_dmrv0"]
 resource_name = "Moneda_Cylinder"
 _surfaces = [{
 "aabb": AABB(-1, -0.105075, -1, 2, 0.22318248, 2),
@@ -40,9 +46,6 @@ _surfaces = [{
 }]
 blend_shape_mode = 0
 shadow_mesh = SubResource("ArrayMesh_46jc5")
-
-[sub_resource type="SphereShape3D" id="SphereShape3D_hy07s"]
-radius = 0.7996147
 
 [sub_resource type="Animation" id="Animation_duy7l"]
 resource_name = "Idle"
@@ -82,16 +85,17 @@ _data = {
 &"RESET": SubResource("Animation_xsnfq")
 }
 
-[node name="moeda" type="Area3D"]
-script = ExtResource("1_hy07s")
+[node name="moeda_especial" type="Area3D"]
+script = ExtResource("1_f01xh")
+
+[node name="moedaes_colisao" type="CollisionShape3D" parent="."]
+shape = SubResource("SphereShape3D_rmvcd")
 
 [node name="Cylinder" type="MeshInstance3D" parent="."]
 transform = Transform3D(0.45962667, -0.38567257, 1.6858284e-08, 0, -2.6226834e-08, -0.6, 0.38567257, 0.45962667, -2.0090921e-08, 0, 0, 0)
-mesh = SubResource("ArrayMesh_fb2rl")
+material_override = SubResource("StandardMaterial3D_f01xh")
+mesh = SubResource("ArrayMesh_dmrv0")
 skeleton = NodePath("")
-
-[node name="moeda_colisao" type="CollisionShape3D" parent="."]
-shape = SubResource("SphereShape3D_hy07s")
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="."]
 libraries = {

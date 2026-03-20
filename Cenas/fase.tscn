@@ -1,10 +1,9 @@
-[gd_scene load_steps=14 format=3 uid="uid://8o1la5jgjuo8"]
+[gd_scene load_steps=11 format=3 uid="uid://8o1la5jgjuo8"]
 
 [ext_resource type="PackedScene" uid="uid://jtphp3i56bxr" path="res://Cenas/player.tscn" id="1_48g7u"]
-[ext_resource type="PackedScene" uid="uid://bthi7j7ixt663" path="res://Cenas/moeda.tscn" id="2_efelf"]
 [ext_resource type="PackedScene" uid="uid://87rkp1xash2k" path="res://Cenas/hud.tscn" id="3_u30cq"]
-[ext_resource type="PackedScene" uid="uid://blnb84bo0pq5s" path="res://Cenas/inimigo_simples.tscn" id="4_htw5y"]
-[ext_resource type="PackedScene" uid="uid://dhdl0ueb3a1qn" path="res://Cenas/plataforma_movel.tscn" id="5_28alh"]
+[ext_resource type="PackedScene" uid="uid://blnb84bo0pq5s" path="res://Cenas/inimigo_simples.tscn" id="4_mij0q"]
+[ext_resource type="PackedScene" uid="uid://vy35tns35in7" path="res://Cenas/inimigo_atirador.tscn" id="5_48g7u"]
 [ext_resource type="PackedScene" uid="uid://bljmugc6vagby" path="res://Cenas/control_fade.tscn" id="6_efelf"]
 
 [sub_resource type="BoxMesh" id="BoxMesh_i68q4"]
@@ -22,25 +21,10 @@ sky_material = SubResource("ProceduralSkyMaterial_o33cy")
 background_mode = 2
 sky = SubResource("Sky_pyaqu")
 
-[sub_resource type="Curve3D" id="Curve3D_3u7sa"]
-closed = true
-_data = {
-"points": PackedVector3Array(0, 0, 0, 0, 0, 0, 5.766758, 0, 9.239684, 0, 0, 0, 0, 0, 0, 18.693851, 0, 9.427035, 0, 0, 0, 0, 0, 0, 18.506496, 0, 21.042683, 0, 0, 0, 0, 0, 0, 5.3920555, 0, 20.855335),
-"tilts": PackedFloat32Array(0, 0, 0, 0)
-}
-point_count = 4
-
-[sub_resource type="Curve3D" id="Curve3D_pv0qo"]
-_data = {
-"points": PackedVector3Array(0, 0, 0, 0, 0, 0, -24.016863, 0.56812835, 24.72877, 0, 0, 0, 0, 0, 0, -23.893068, 0.68506193, 10.445068, 0, 0, 0, 0, 0, 0, -24.020693, 0.5642066, 24.732565),
-"tilts": PackedFloat32Array(0, 0, 0)
-}
-point_count = 3
-
 [node name="Fase" type="Node3D"]
 
 [node name="Player" parent="." instance=ExtResource("1_48g7u")]
-transform = Transform3D(0.5, 0, 0, 0, 0.5, 0, 0, 0, 0.5, 0, 0.76401615, -19.849743)
+transform = Transform3D(0.5, 0, 0, 0, 0.5, 0, 0, 0, 0.5, 0, 1.5468659, -19.849743)
 
 [node name="chao" type="StaticBody3D" parent="."]
 
@@ -57,24 +41,12 @@ transform = Transform3D(1, 0, 0, 0, -4.371139e-08, 1, 0, -1, -4.371139e-08, -0.0
 [node name="WorldEnvironment" type="WorldEnvironment" parent="."]
 environment = SubResource("Environment_3u7sa")
 
-[node name="moeda" parent="." instance=ExtResource("2_efelf")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 10, 2.3753653, 0)
-
 [node name="HUD" parent="." instance=ExtResource("3_u30cq")]
 
-[node name="Path3D" type="Path3D" parent="."]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.705, 0)
-curve = SubResource("Curve3D_3u7sa")
-
-[node name="Inimigo_simples" parent="Path3D" instance=ExtResource("4_htw5y")]
-transform = Transform3D(-0.014491388, 0, -0.99989057, 0, 1, 0, 0.99989057, 0, -0.014491388, 5.766758, 0, 9.239684)
-
-[node name="Path3D2" type="Path3D" parent="."]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 4.2454586, 1.0173111, -7.8959)
-curve = SubResource("Curve3D_pv0qo")
-
-[node name="plataforma_movel" parent="Path3D2" instance=ExtResource("5_28alh")]
-transform = Transform3D(1, 0, 0, 0, 0.9999999, 0, 0, 0, 1, -24.016863, 0.56812835, 24.72877)
-rotation_mode = 0
-
 [node name="ControlFade" parent="." instance=ExtResource("6_efelf")]
+
+[node name="Inimigo_simples" parent="." instance=ExtResource("4_mij0q")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -13.609592, 0.6272745, 0)
+
+[node name="inimigo_atirador" parent="." instance=ExtResource("5_48g7u")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 8.429125, 1.2562585, 0)

@@ -1,0 +1,44 @@
+extends CharacterBody3D
+
+@export var vida = 4
+@export var velocidade = 3.5
+@export var distancia_parar = 1.0
+
+var player = null
+
+func _ready() -> void:
+	player = get_tree().current_scene.get_node("Player")
+	
+func _physics_process(delta: float) -> void:
+	if not player:
+		return
+	var distancia = global_position.distance_to(player.global_position)
+	
+	if distancia > distancia_parar:
+		mover_para_player(delta)
+	else:
+		velocity = Vector3.ZERO
+		
+	olhar_para_player()
+	
+	move_and_slide()
+	
+func mover_para_player(delta):
+	var direcao = (player.global_position - global_position).normalized()
+	direcao.y = 0
+	velocity = direcao * velocidade
+	
+func olhar_para_player():
+	if player:
+		var olhar_direcao = player.global_position - global_position
+		olhar_direcao.y = 0
+		if olhar_direcao != Vector3.ZERO:
+			var target_rotation = atan2(-olhar_direcao.x, -olhar_direcao.z)
+			rotation.y = target_rotation
+
+func _on_inimigo_3_hurtbox_area_entered(area: Area3D) -> void:
+	if area.name == "player_hitbox":
+		vida -= Globalvar.player_dano
+		
+	if vida <= 0:
+		queue_free()

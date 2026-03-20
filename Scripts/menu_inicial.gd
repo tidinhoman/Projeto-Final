@@ -2,6 +2,7 @@ extends Control
 
 func _ready() -> void:
 	$Panel/novoJogo.grab_focus()
+	get_tree().paused = false
 
 func _on_novo_jogo_button_down() -> void:
 	Globalvar.fade_out = true

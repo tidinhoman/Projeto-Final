@@ -1,0 +1,31 @@
+[gd_scene load_steps=5 format=3 uid="uid://cn6s8ticcubm8"]
+
+[ext_resource type="Script" uid="uid://bsnifdojc2jfu" path="res://Scripts/inimigo_perseguidor.gd" id="1_y8yg2"]
+
+[sub_resource type="CapsuleMesh" id="CapsuleMesh_bhdnt"]
+
+[sub_resource type="CapsuleShape3D" id="CapsuleShape3D_bhdnt"]
+
+[sub_resource type="CapsuleShape3D" id="CapsuleShape3D_y8yg2"]
+radius = 0.7055664
+height = 2.208374
+
+[node name="inimigo_perseguidor" type="CharacterBody3D"]
+script = ExtResource("1_y8yg2")
+
+[node name="inimigo3_modelo" type="MeshInstance3D" parent="."]
+mesh = SubResource("CapsuleMesh_bhdnt")
+
+[node name="inimigo3_hitbox" type="Area3D" parent="."]
+
+[node name="colisao_hitbox" type="CollisionShape3D" parent="inimigo3_hitbox"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.025390625, 0)
+shape = SubResource("CapsuleShape3D_bhdnt")
+
+[node name="inimigo3_hurtbox" type="Area3D" parent="."]
+
+[node name="colisao_hurtbox" type="CollisionShape3D" parent="inimigo3_hurtbox"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.09222412, 0)
+shape = SubResource("CapsuleShape3D_y8yg2")
+
+[connection signal="area_entered" from="inimigo3_hurtbox" to="." method="_on_inimigo_3_hurtbox_area_entered"]

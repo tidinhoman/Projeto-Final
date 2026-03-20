@@ -2,21 +2,20 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://dct5qv561lvkw"
-path.s3tc="res://.godot/imported/moeda_ouro_3.png-8cb23b5e365241b4f47bcf5ade22ac1f.s3tc.ctex"
+uid="uid://clfaa4icuyfs2"
+path="res://.godot/imported/moedaes_icon.png-915da9c91e395137b3949e0a5c0c895d.ctex"
 metadata={
-"imported_formats": ["s3tc_bptc"],
-"vram_texture": true
+"vram_texture": false
 }
 
 [deps]
 
-source_file="res://Assets/Moeda/moeda_ouro_3.png"
-dest_files=["res://.godot/imported/moeda_ouro_3.png-8cb23b5e365241b4f47bcf5ade22ac1f.s3tc.ctex"]
+source_file="res://Assets/Moeda/moedaes_icon.png"
+dest_files=["res://.godot/imported/moedaes_icon.png-915da9c91e395137b3949e0a5c0c895d.ctex"]
 
 [params]
 
-compress/mode=2
+compress/mode=0
 compress/high_quality=false
 compress/lossy_quality=0.7
 compress/uastc_level=0
@@ -24,7 +23,7 @@ compress/rdo_quality_loss=0.0
 compress/hdr_compression=1
 compress/normal_map=0
 compress/channel_pack=0
-mipmaps/generate=true
+mipmaps/generate=false
 mipmaps/limit=-1
 roughness/mode=0
 roughness/src_normal=""
@@ -38,4 +37,4 @@ process/normal_map_invert_y=false
 process/hdr_as_srgb=false
 process/hdr_clamp_exposure=false
 process/size_limit=0
-detect_3d/compress_to=0
+detect_3d/compress_to=1
