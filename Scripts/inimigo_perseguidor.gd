@@ -1,7 +1,7 @@
 extends CharacterBody3D
 
 @export var vida = 4
-@export var velocidade = 3.5
+@export var velocidade = 4.0
 @export var distancia_parar = 1.0
 
 var player = null
