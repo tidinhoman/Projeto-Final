@@ -34,6 +34,7 @@ func _on_inimigo_1_hurtbox_area_entered(area: Area3D) -> void:
 		vida -= Globalvar.player_dano
 		
 	if vida <= 0:
+		Globalvar.total_pontos += 5
 		queue_free()
 
 func _on_inimigo_1_hurtbox_area_exited(area: Area3D) -> void:

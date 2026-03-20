@@ -1,4 +1,4 @@
-[gd_scene load_steps=10 format=3 uid="uid://cn6s8ticcubm8"]
+[gd_scene load_steps=11 format=3 uid="uid://cn6s8ticcubm8"]
 
 [ext_resource type="Script" uid="uid://bsnifdojc2jfu" path="res://Scripts/inimigo_perseguidor.gd" id="1_y8yg2"]
 [ext_resource type="PackedScene" uid="uid://6gie3iagwnm7" path="res://Assets/Inimigos/bixo3.glb" id="2_1ty6n"]
@@ -132,28 +132,35 @@ _data = {
 &"tomando_dano": SubResource("Animation_1ty6n")
 }
 
+[sub_resource type="SphereShape3D" id="SphereShape3D_1ty6n"]
+radius = 0.5478132
+
 [node name="inimigo_perseguidor" type="CharacterBody3D"]
 script = ExtResource("1_y8yg2")
 
 [node name="inimigo3_hitbox" type="Area3D" parent="."]
 
 [node name="colisao_hitbox" type="CollisionShape3D" parent="inimigo3_hitbox"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.2869391, 0)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.5031054, 0)
 shape = SubResource("CapsuleShape3D_bhdnt")
 
 [node name="inimigo3_hurtbox" type="Area3D" parent="."]
 
 [node name="colisao_hurtbox" type="CollisionShape3D" parent="inimigo3_hurtbox"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.4349592, 0)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.530903, 0)
 shape = SubResource("CapsuleShape3D_y8yg2")
 
 [node name="bixo3" parent="." instance=ExtResource("2_1ty6n")]
-transform = Transform3D(-1, 0, -1.509958e-07, 0, 1, 0, 1.509958e-07, 0, -1, 0, -1.1679583, 0)
+transform = Transform3D(-0.7, 0, 6.119594e-08, 0, 0.7, 0, -6.119594e-08, 0, -0.7, 0, -1.1679583, 0)
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="."]
 libraries = {
 &"": SubResource("AnimationLibrary_e8f1e")
 }
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.5423416, 0)
+shape = SubResource("SphereShape3D_1ty6n")
 
 [connection signal="area_entered" from="inimigo3_hitbox" to="." method="_on_inimigo_3_hitbox_area_entered"]
 [connection signal="area_exited" from="inimigo3_hitbox" to="." method="_on_inimigo_3_hitbox_area_exited"]

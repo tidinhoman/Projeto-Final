@@ -9,6 +9,8 @@ var esta_atacando = false
 var tomou_dano = false
 var morte_processada = false
 
+var respawn
+
 @onready var anim: AnimationPlayer = $Armature/Skeleton3D/AnimationPlayer
 @onready var hitbox: CollisionShape3D = $player_hitbox/colisao_hitbox
 
@@ -19,6 +21,8 @@ func _ready() -> void:
 	Globalvar.player_morreu = false
 	morte_processada = false
 	Globalvar.player_vida = 6
+
+	respawn = get_parent().get_node("Checkpoint")
 
 func _physics_process(delta: float) -> void:
 	if Globalvar.player_morreu:
@@ -99,6 +103,7 @@ func animacao():
 func _on_player_hurtbox_area_entered(area: Area3D) -> void:
 	if area.name == "inimigo1_hitbox" or area.name == "projetil" or area.name == "inimigo3_hitbox":
 		tomou_dano = true
+		Globalvar.total_pontos -= 5
 		Globalvar.player_vida -= 1
 		anim.play("Hurt")
 		
@@ -107,6 +112,15 @@ func _on_player_hurtbox_area_entered(area: Area3D) -> void:
 		else:
 			await get_tree().create_timer(0.8).timeout
 			tomou_dano = false
+	
+	if area.name == "buraco":
+		Globalvar.player_vida -= 1
+		Globalvar.total_pontos -= 5
+		Globalvar.fade_out = true
+		await get_tree().create_timer(1.5).timeout
+		Globalvar.fade_out = false
+		Globalvar.fade_in = true
+		position = respawn.global_position
 		
 func morte():
 	if morte_processada:

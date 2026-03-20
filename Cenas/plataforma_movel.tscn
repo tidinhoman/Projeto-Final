@@ -3,10 +3,10 @@
 [ext_resource type="Script" uid="uid://cbwoxi6ypu86r" path="res://Scripts/plataforma_movel.gd" id="1_h67r2"]
 
 [sub_resource type="BoxMesh" id="BoxMesh_havic"]
-size = Vector3(6, 0.2, 6)
+size = Vector3(4, 0.2, 4)
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_h67r2"]
-size = Vector3(6, 0.2, 6)
+size = Vector3(4, 0.2, 4)
 
 [node name="plataforma_movel" type="PathFollow3D"]
 script = ExtResource("1_h67r2")
